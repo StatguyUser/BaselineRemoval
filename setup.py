@@ -7,7 +7,7 @@ setup(
     author='StatguyUser',
     url='https://github.com/StatguyUser/Baseline',
     install_requires=['numpy','sklearn'],
-    download_url='',
+    download_url='https://github.com/StatguyUser/Baseline.git',
     py_modules=["Baseline"],
     package_dir={'':'src'},
 )
