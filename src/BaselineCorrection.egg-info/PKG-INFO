@@ -1,0 +1,11 @@
+Metadata-Version: 1.1
+Name: BaselineCorrection
+Version: 0.0.1
+Summary: Implementation of Modified polyfit method and IModPoly method for baseline correction
+Home-page: https://github.com/StatguyUser/BaselineCorrection
+Author: StatguyUser
+Author-email: UNKNOWN
+License: UNKNOWN
+Download-URL: https://github.com/StatguyUser/BaselineCorrection.git
+Description: UNKNOWN
+Platform: UNKNOWN

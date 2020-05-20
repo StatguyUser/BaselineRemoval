@@ -1,0 +1,9 @@
+README.md
+setup.cfg
+setup.py
+src/BaselineCorrection.py
+src/BaselineCorrection.egg-info/PKG-INFO
+src/BaselineCorrection.egg-info/SOURCES.txt
+src/BaselineCorrection.egg-info/dependency_links.txt
+src/BaselineCorrection.egg-info/requires.txt
+src/BaselineCorrection.egg-info/top_level.txt
