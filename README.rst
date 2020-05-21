@@ -18,8 +18,9 @@ How to use is it?
     from BaselineRemoval import BaselineRemoval
 
     input_array=[10,20,1.5,5,2,9,99,25,47]
+    polynomial_degree=2
 
-    baseObj=BaselineRemoval(input_array,2)
+    baseObj=BaselineRemoval(input_array,polynomial_degree)
     Modpoly_output=baseObj.ModPoly()
     Imodpoly_output=baseObj.IModPoly()
 
