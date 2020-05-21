@@ -50,7 +50,7 @@ Where to get it?
 Dependencies
 ============
 
- - `numpy <https://www.numpy.org/]>`_
+ - [numpy](https://www.numpy.org/])
 
- - `scikit-learn <https://scikit-learn.org/>`_
+ - [scikit-learn](https://scikit-learn.org/)
 
