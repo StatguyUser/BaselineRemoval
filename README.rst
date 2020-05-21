@@ -1,8 +1,8 @@
 What is it?
 ===========
 
-BaselineCorrection is a Python package providing baseline correction.
-There are 2 main methods for baseline correction. - **Modpoly** in the
+BaselineRemoval is a Python package providing baseline removal.
+There are 2 main methods for baseline removal. - **Modpoly** in the
 paper titled Automated Method for Subtraction of Fluorescence from
 Biological Raman Spectra, by Lieber & Mahadevan-Jansen (2003) -
 **IModPoly**, which is an enhancement on existing Modpoly algorithm,
@@ -15,11 +15,11 @@ How to use is it?
 
 ::
 
-    from BaselineCorrection import BaselineCorrection
+    from BaselineRemoval import BaselineRemoval
 
     input_array=[10,20,1.5,5,2,9,99,25,47]
 
-    baseObj=BaselineCorrection(input_array,2)
+    baseObj=BaselineRemoval(input_array,2)
     Modpoly_output=baseObj.ModPoly()
     Imodpoly_output=baseObj.IModPoly()
 
@@ -30,7 +30,7 @@ How to use is it?
 Where to get it?
 ================
 
-``pip install baseline``
+``pip install BaselineRemoval``
 
 Dependencies
 ============

@@ -3,7 +3,7 @@ from sklearn.linear_model import LinearRegression
 import warnings
 warnings.filterwarnings('ignore')
 
-class BaselineCorrection():
+class BaselineRemoval():
     '''input_array: A pandas dataframe column provided in input as dataframe['input_df_column']. It can also be a Python list object
     degree: Polynomial degree
     '''     
@@ -95,7 +95,7 @@ class BaselineCorrection():
     
 if __name__=="__main__":
         input_array = np.random.randint(0, 10, 20)
-        obj = BaselineCorrection(input_array,2)
+        obj = BaselineRemoval(input_array,2)
         Modpoly_output=obj.ModPoly()
         Imodpoly_output=obj.IModPoly()
         print('Original input:',input_array)

@@ -1,0 +1,11 @@
+Metadata-Version: 1.1
+Name: BaselineRemoval
+Version: 0.0.1
+Summary: Implementation of Modified polyfit method and IModPoly method for baseline BaselineRemoval
+Home-page: https://github.com/StatguyUser/BaselineRemoval
+Author: StatguyUser
+Author-email: UNKNOWN
+License: UNKNOWN
+Download-URL: https://github.com/StatguyUser/BaselineRemoval.git
+Description: UNKNOWN
+Platform: UNKNOWN

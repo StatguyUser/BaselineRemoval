@@ -11,13 +11,13 @@ else:
 
 
 setup(
-    name='BaselineCorrection',
+    name='BaselineRemoval',
     version='0.0.1',
-    description='Implementation of Modified polyfit method and IModPoly method for baseline correction',
+    description='Implementation of Modified polyfit method and IModPoly method for baseline BaselineRemoval',
     author='StatguyUser',
-    url='https://github.com/StatguyUser/BaselineCorrection',
+    url='https://github.com/StatguyUser/BaselineRemoval',
     install_requires=['numpy','sklearn'],
-    download_url='https://github.com/StatguyUser/BaselineCorrection.git',
-    py_modules=["BaselineCorrection"],
+    download_url='https://github.com/StatguyUser/BaselineRemoval.git',
+    py_modules=["BaselineRemoval"],
     package_dir={'':'src'},
 )

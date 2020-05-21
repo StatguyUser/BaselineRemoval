@@ -1,0 +1,9 @@
+README.rst
+setup.cfg
+setup.py
+src/BaselineRemoval.py
+src/BaselineRemoval.egg-info/PKG-INFO
+src/BaselineRemoval.egg-info/SOURCES.txt
+src/BaselineRemoval.egg-info/dependency_links.txt
+src/BaselineRemoval.egg-info/requires.txt
+src/BaselineRemoval.egg-info/top_level.txt

@@ -1,9 +1,0 @@
-README.md
-setup.cfg
-setup.py
-src/Baseline.py
-src/Baseline.egg-info/PKG-INFO
-src/Baseline.egg-info/SOURCES.txt
-src/Baseline.egg-info/dependency_links.txt
-src/Baseline.egg-info/requires.txt
-src/Baseline.egg-info/top_level.txt
