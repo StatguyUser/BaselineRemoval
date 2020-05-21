@@ -1,4 +1,5 @@
 README.md
+README.rst
 setup.cfg
 setup.py
 src/BaselineCorrection.py
