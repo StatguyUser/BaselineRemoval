@@ -12,8 +12,8 @@ else:
 
 setup(
     name='BaselineRemoval',
-    version='0.0.3',
-    description='Implementation of Modified polyfit method and IModPoly method for baseline BaselineRemoval',
+    version='0.0.4',
+    description='Implementation of Modified polyfit method and IModPoly method for baseline removal',
     long_description=long_description,
     long_description_content_type='text/markdown',  # This is important!
     author='StatguyUser',
