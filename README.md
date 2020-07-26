@@ -1,7 +1,8 @@
 # What is it?
 Python package for baseline correction. It has below 2 methods for baseline removal from spectra.
   - **Modpoly** Modified multi-polynomial fit [1] 
-  - **IModPoly** Improved ModPoly, which addresses noise issue in ModPoly [2]
+  - **IModPoly** Improved ModPoly[2], which addresses noise issue in ModPoly
+
 We can use the python library to process spectral data through either ModPoly or IModPoly algorithm for baseline subtraction. The functions will return baseline-subtracted spectrum.
 
 # How to use it?

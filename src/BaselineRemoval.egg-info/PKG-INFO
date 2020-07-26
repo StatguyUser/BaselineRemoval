@@ -13,7 +13,7 @@ Description: What is it?
         
           - **Modpoly** Modified multi-polynomial fit [1]
         
-          - **IModPoly** Improved ModPoly, which addresses noise issue in ModPoly [2]
+          - **IModPoly** Improved ModPoly[2], which addresses noise issue in ModPoly
         
         We can use the python library to process spectral data through either ModPoly or IModPoly algorithm for baseline subtraction. The functions will return baseline-subtracted spectrum.
         
