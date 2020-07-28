@@ -12,7 +12,7 @@ else:
 
 setup(
     name='BaselineRemoval',
-    version='0.0.5',
+    version='0.0.6',
     description='Implementation of Modified polyfit method, IModPoly method and Zhang fit method for baseline removal',
     long_description=long_description,
     long_description_content_type='text/markdown',  # This is important!
