@@ -1,7 +1,7 @@
 Metadata-Version: 2.1
 Name: BaselineRemoval
-Version: 0.0.4
-Summary: Implementation of Modified polyfit method and IModPoly method for baseline removal
+Version: 0.0.5
+Summary: Implementation of Modified polyfit method, IModPoly method and Zhang fit method for baseline removal
 Home-page: https://github.com/StatguyUser/BaselineRemoval
 Author: StatguyUser
 License: UNKNOWN
@@ -9,13 +9,15 @@ Download-URL: https://github.com/StatguyUser/BaselineRemoval.git
 Description: What is it?
         ===========
         
-        Python package for baseline correction. It has below 2 methods for baseline removal from spectra.
+        Python package for baseline correction. It has below 3 methods for baseline removal from spectra.
         
           - **Modpoly** Modified multi-polynomial fit [1]
         
           - **IModPoly** Improved ModPoly[2], which addresses noise issue in ModPoly
         
-        We can use the python library to process spectral data through either ModPoly or IModPoly algorithm for baseline subtraction. The functions will return baseline-subtracted spectrum.
+          - **ZhangFit** Zhang fit[3], which doesn’t require any user intervention and prior information, such as detected peaks.
+        
+        We can use the python library to process spectral data through either of the techniques ModPoly, IModPoly or Zhang fit algorithm for baseline subtraction. The functions will return baseline-subtracted spectrum.
         
         How to use it?
         =================
@@ -28,11 +30,13 @@ Description: What is it?
         
         polynomial_degree=2
         
-        baseObj=BaselineRemoval(input*array,polynomial*degree)
+        baseObj=BaselineRemoval(input_array,polynomial_degree)
         
         Modpoly_output=baseObj.ModPoly()
         
         Imodpoly_output=baseObj.IModPoly()
+        
+        Zhangfit_output=baseObj.ZhangFit()
         
         print('Original input:',input_array)
         
@@ -40,16 +44,20 @@ Description: What is it?
         
         print('IModPoly base corrected values:',Imodpoly_output)
         
+        print('ZhangFit base corrected values:',Zhangfit_output)
+        
         Original input: [10, 20, 1.5, 5, 2, 9, 99, 25, 47]
         
         Modpoly base corrected values: [-1.98455800e-04  1.61793368e+01  1.08455179e+00  5.21544654e+00
-        
           7.20210508e-02  2.15427531e+00  8.44622093e+01 -4.17691125e-03
-        
           8.75511661e+00]
-        IModPoly base corrected values: [-0.84912125 15.13786196 -0.11351367  3.89675187 -1.33134142  0.70220645
         
+        IModPoly base corrected values: [-0.84912125 15.13786196 -0.11351367  3.89675187 -1.33134142  0.70220645
          82.99739548 -1.44577432  7.37269705]
+        
+        ZhangFit base corrected values: [ 8.49924691e+00  1.84994576e+01 -3.31739230e-04  3.49854060e+00
+          4.97412948e-01  7.49628529e+00  9.74951576e+01  2.34940300e+01
+          4.54929023e+01
         
         ```
         Where to get it?
@@ -64,12 +72,14 @@ Description: What is it?
         
          - [scikit-learn](https://scikit-learn.org/)
         
+         - [scipy](https://www.scipy.org/)
+        
         References
         ============
         
         1. [Automated Method for Subtraction of Fluorescence from Biological Raman Spectra](https://www.researchgate.net/publication/8974238_Automated_Method_for_Subtraction_of_Fluorescence_from_Biological_Raman_Spectra) by Lieber & Mahadevan-Jansen (2003)
         2. [Automated Autofluorescence Background Subtraction Algorithm for Biomedical Raman Spectroscopy](https://www.researchgate.net/publication/5818031_Automated_Autofluorescence_Background_Subtraction_Algorithm_for_Biomedical_Raman_Spectroscopy) by Zhao, Jianhua, Lui, Harvey, McLean, David I., Zeng, Haishan (2007)
-        
+        3. [Baseline correction using adaptive iteratively reweighted penalized least squares](https://pubs.rsc.org/is/content/articlelanding/2010/an/b922045c#!divAbstract) by Zhi-Min Zhang, Shan Chena and Yi-Zeng Liang (2010)
         
 Platform: UNKNOWN
 Description-Content-Type: text/markdown

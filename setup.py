@@ -12,13 +12,13 @@ else:
 
 setup(
     name='BaselineRemoval',
-    version='0.0.4',
-    description='Implementation of Modified polyfit method and IModPoly method for baseline removal',
+    version='0.0.5',
+    description='Implementation of Modified polyfit method, IModPoly method and Zhang fit method for baseline removal',
     long_description=long_description,
     long_description_content_type='text/markdown',  # This is important!
     author='StatguyUser',
     url='https://github.com/StatguyUser/BaselineRemoval',
-    install_requires=['numpy','sklearn'],
+    install_requires=['numpy','sklearn','scipy'],
     download_url='https://github.com/StatguyUser/BaselineRemoval.git',
     py_modules=["BaselineRemoval"],
     package_dir={'':'src'},
