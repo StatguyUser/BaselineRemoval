@@ -1,5 +1,7 @@
 import numpy as np
 from sklearn.linear_model import LinearRegression
+from scipy.sparse import csc_matrix, eye, diags
+from scipy.sparse.linalg import spsolve
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -92,12 +94,64 @@ class BaselineRemoval():
         baseline=self.lin.predict(polx)
         corrected=yorig-baseline
         return corrected
-    
+
+    def _WhittakerSmooth(self,x,w,lambda_,differences=1):
+        '''
+        Penalized least squares algorithm for background fitting
+
+        input
+            x: input data (i.e. chromatogram of spectrum)
+            w: binary masks (value of the mask is zero if a point belongs to peaks and one otherwise)
+            lambda_: parameter that can be adjusted by user. The larger lambda is,  the smoother the resulting background
+            differences: integer indicating the order of the difference of penalties
+
+        output
+            the fitted background vector
+        '''
+        X=np.matrix(x)
+        m=X.size
+        i=np.arange(0,m)
+        E=eye(m,format='csc')
+        D=E[1:]-E[:-1] # numpy.diff() does not work with sparse matrix. This is a workaround.
+        W=diags(w,0,shape=(m,m))
+        A=csc_matrix(W+(lambda_*D.T*D))
+        B=csc_matrix(W*X.T)
+        background=spsolve(A,B)
+        return np.array(background)
+
+    def ZhangFit(self,lambda_=100, porder=1, itermax=15):
+        '''
+        Implementation of Zhang fit for Adaptive iteratively reweighted penalized least squares for baseline fitting. Modified from Original implementation by Professor Zhimin Zhang at https://github.com/zmzhang/airPLS/
+        
+        lambda_: parameter that can be adjusted by user. The larger lambda is,  the smoother the resulting background, z
+        porder: adaptive iteratively reweighted penalized least squares for baseline fitting
+        '''
+
+        yorig=np.array(self.input_array)
+        corrected=[]
+
+        m=yorig.shape[0]
+        w=np.ones(m)
+        for i in range(1,itermax+1):
+            corrected=self._WhittakerSmooth(yorig,w,lambda_, porder)
+            d=yorig-corrected
+            dssn=np.abs(d[d<0].sum())
+            if(dssn<0.001*(abs(yorig)).sum() or i==itermax):
+                if(i==itermax): print('WARING max iteration reached!')
+                break
+            w[d>=0]=0 # d>0 means that this point is part of a peak, so its weight is set to 0 in order to ignore it
+            w[d<0]=np.exp(i*np.abs(d[d<0])/dssn)
+            w[0]=np.exp(i*(d[d<0]).max()/dssn) 
+            w[-1]=w[0]
+        return yorig-corrected
+
 if __name__=="__main__":
         input_array = np.random.randint(0, 10, 20)
         obj = BaselineRemoval(input_array,2)
         Modpoly_output=obj.ModPoly()
         Imodpoly_output=obj.IModPoly()
+        Zhangfit_output=obj.ZhangFit()
         print('Original input:',input_array)
-        print('Modpoly output:',Modpoly_output)
-        print('Imodpoly output:',Imodpoly_output)
+        print('Modpoly base corrected values:',Modpoly_output)
+        print('Imodpoly base corrected values:',Imodpoly_output)
+        print('ZhangFit base corrected values:',Zhangfit_output)
