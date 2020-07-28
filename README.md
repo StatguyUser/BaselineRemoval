@@ -11,11 +11,11 @@ We can use the python library to process spectral data through either of the tec
 from BaselineRemoval import BaselineRemoval
 
 input_array=[10,20,1.5,5,2,9,99,25,47]
-polynomial_degree=2
+polynomial_degree=2 #only needed for Modpoly and IModPoly algorithm
 
-baseObj=BaselineRemoval(input_array,polynomial_degree)
-Modpoly_output=baseObj.ModPoly()
-Imodpoly_output=baseObj.IModPoly()
+baseObj=BaselineRemoval(input_array)
+Modpoly_output=baseObj.ModPoly(polynomial_degree)
+Imodpoly_output=baseObj.IModPoly(polynomial_degree)
 Zhangfit_output=baseObj.ZhangFit()
 
 print('Original input:',input_array)
