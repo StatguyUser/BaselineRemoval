@@ -12,8 +12,8 @@ else:
 
 setup(
     name='BaselineRemoval',
-    version='0.0.6',
-    description='Implementation of Modified polyfit method, IModPoly method and Zhang fit method for baseline removal',
+    version='0.0.7',
+    description='Perform baseline removal, baseline correction and baseline substraction for raman spectra using Modpoly, ImodPoly and Zhang fit. Returns baseline-subtracted spectrum',
     long_description=long_description,
     long_description_content_type='text/markdown',  # This is important!
     author='StatguyUser',
