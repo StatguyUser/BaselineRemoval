@@ -18,7 +18,7 @@ setup(
     long_description_content_type='text/markdown',  # This is important!
     author='StatguyUser',
     url='https://github.com/StatguyUser/BaselineRemoval',
-    install_requires=['numpy','sklearn','scipy'],
+    install_requires=['numpy','scikit-learn','scipy'],
     download_url='https://github.com/StatguyUser/BaselineRemoval.git',
     py_modules=["BaselineRemoval"],
     package_dir={'':'src'},
