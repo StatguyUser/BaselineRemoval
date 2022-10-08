@@ -1,8 +1,8 @@
 # What is it?
 Python package for baseline correction. It has below 3 methods for baseline removal from spectra.
-  - **Modpoly** Modified multi-polynomial fit [1] 
-  - **IModPoly** Improved ModPoly[2], which addresses noise issue in ModPoly
-  - **ZhangFit** Zhang fit[3], which doesn’t require any user intervention and prior information, such as detected peaks.
+  - **Modpoly** Modified multi-polynomial fit [1]. It has 3 parameters. 1) `degree` refers to polynomial degree, and default value is 2. 2) `repitition` is how many iterations to run, and default value is 100. 3) `gradient` refers to gradient for polynomial loss, default is 0.001. It measures incremental gain over each iteration. If gain in any iteration is less than this, further improvement will stop.
+  - **IModPoly** Improved ModPoly[2], which addresses noise issue in ModPoly. It has 3 parameters. 1) `degree` refers to polynomial degree, and default value is 2. 2) `repitition` is how many iterations to run, and default value is 100. 3) `gradient` refers to gradient for polynomial loss, default is 0.001. It measures incremental gain over each iteration. If gain in any iteration is less than this, further improvement will stop.
+  - **ZhangFit** Zhang fit[3], which doesn’t require any user intervention and prior information, such as detected peaks. It has 3 parameters. 1) `lambda_`, it can be adjusted by user. The larger lambda is,  the smoother the resulting background. 2) `porder` refers to adaptive iteratively reweighted penalized least squares for baseline fitting. Default value is 1. 3) `repitition` is how many iterations to run, and default value is 15.
 
 We can use the python library to process spectral data through either of the techniques ModPoly, IModPoly or Zhang fit algorithm for baseline subtraction. The functions will return baseline-subtracted spectrum.
 

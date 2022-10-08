@@ -1,4 +1,5 @@
 import numpy as np
+np.random.seed(1)
 from sklearn.linear_model import LinearRegression
 from scipy.sparse import csc_matrix, eye, diags
 from scipy.sparse.linalg import spsolve
@@ -29,7 +30,9 @@ class BaselineRemoval():
         '''Implementation of Modified polyfit method from paper: Automated Method for Subtraction of Fluorescence from Biological Raman Spectra, by Lieber & Mahadevan-Jansen (2003)
         
         degree: Polynomial degree, default is 2
+
         repitition: How many iterations to run. Default is 100
+
         gradient: Gradient for polynomial loss, default is 0.001. It measures incremental gain over each iteration. If gain in any iteration is less than this, further improvement will stop
         '''
 
@@ -60,7 +63,9 @@ class BaselineRemoval():
         '''IModPoly from paper: Automated Autofluorescence Background Subtraction Algorithm for Biomedical Raman Spectroscopy, by Zhao, Jianhua, Lui, Harvey, McLean, David I., Zeng, Haishan (2007)
 
         degree: Polynomial degree, default is 2        
+
         repitition: How many iterations to run. Default is 100
+
         gradient: Gradient for polynomial loss, default is 0.001. It measures incremental gain over each iteration. If gain in any iteration is less than this, further improvement will stop
         '''
 
@@ -120,12 +125,15 @@ class BaselineRemoval():
         background=spsolve(A,B)
         return np.array(background)
 
-    def ZhangFit(self,lambda_=100, porder=1, itermax=15):
+    def ZhangFit(self,lambda_=100, porder=1, repitition=15):
         '''
         Implementation of Zhang fit for Adaptive iteratively reweighted penalized least squares for baseline fitting. Modified from Original implementation by Professor Zhimin Zhang at https://github.com/zmzhang/airPLS/
         
         lambda_: parameter that can be adjusted by user. The larger lambda is,  the smoother the resulting background, z
+
         porder: adaptive iteratively reweighted penalized least squares for baseline fitting
+
+        repitition: how many iterations to run, and default value is 15.
         '''
 
         yorig=np.array(self.input_array)
@@ -133,12 +141,12 @@ class BaselineRemoval():
 
         m=yorig.shape[0]
         w=np.ones(m)
-        for i in range(1,itermax+1):
+        for i in range(1,repitition+1):
             corrected=self._WhittakerSmooth(yorig,w,lambda_, porder)
             d=yorig-corrected
             dssn=np.abs(d[d<0].sum())
-            if(dssn<0.001*(abs(yorig)).sum() or i==itermax):
-                if(i==itermax): print('WARING max iteration reached!')
+            if(dssn<0.001*(abs(yorig)).sum() or i==repitition):
+                if(i==repitition): print('WARING max iteration reached!')
                 break
             w[d>=0]=0 # d>0 means that this point is part of a peak, so its weight is set to 0 in order to ignore it
             w[d<0]=np.exp(i*np.abs(d[d<0])/dssn)
