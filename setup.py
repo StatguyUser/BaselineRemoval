@@ -12,7 +12,7 @@ else:
 
 setup(
     name='BaselineRemoval',
-    version='0.0.9',
+    version='0.1.0',
     description='Perform baseline removal, baseline correction and baseline substraction for raman spectra using Modpoly, ImodPoly and Zhang fit. Returns baseline-subtracted spectrum',
     long_description=long_description,
     long_description_content_type='text/markdown',  # This is important!
