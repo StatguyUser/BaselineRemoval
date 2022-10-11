@@ -3,9 +3,7 @@ What is it?
 
 Python package for baseline correction. It has below 3 methods for baseline removal from spectra.
 
-  - **Modpoly** Modified multi-polynomial fit [1].
-  
-  It has 3 parameters.
+  - **Modpoly** Modified multi-polynomial fit [1]. It has below 3 parameters.
   
   1) `degree`, it refers to polynomial degree, and default value is 2.
   
@@ -13,9 +11,7 @@ Python package for baseline correction. It has below 3 methods for baseline remo
   
   3) `gradient`, it refers to gradient for polynomial loss, default is 0.001. It measures incremental gain over each iteration. If gain in any iteration is less than this, further improvement will stop.
   
-  - **IModPoly** Improved ModPoly[2], which addresses noise issue in ModPoly.
-  
-  It has 3 parameters.
+  - **IModPoly** Improved ModPoly[2], which addresses noise issue in ModPoly. It has below 3 parameters.
   
   1) `degree`, it refers to polynomial degree, and default value is 2.
   
@@ -23,11 +19,9 @@ Python package for baseline correction. It has below 3 methods for baseline remo
   
   3) `gradient`, it refers to gradient for polynomial loss, and default is 0.001. It measures incremental gain over each iteration. If gain in any iteration is less than this, further improvement will stop.
   
-  - **ZhangFit** Zhang fit[3], which doesn’t require any user intervention and prior information, such as detected peaks.
+  - **ZhangFit** Zhang fit[3], which doesn’t require any user intervention and prior information, such as detected peaks. It has below 3 parameters.
   
-  It has 3 parameters.
-  
-  1) `lambda_`, it can be adjusted by user. The larger lambda is,  the smoother the resulting background.
+  1) `lambda_`, it can be adjusted by user. The larger lambda is,  the smoother the resulting background. Default value is 100.
   
   2) `porder` refers to adaptive iteratively reweighted penalized least squares for baseline fitting. Default value is 1.
   
