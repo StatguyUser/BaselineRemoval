@@ -1,7 +1,7 @@
 What is it?
 ===========
 
-Python package for baseline correction. It has below 3 methods for baseline removal from spectra.
+Companion python library for the machine learning book `Feature Engineering & Selection for Explainable Models A Second Course for Data Scientists`. It is used for baseline correction. It has below 3 methods for baseline removal from spectra.
 
   - **Modpoly** Modified multi-polynomial fit [1]. It has below 3 parameters.
   
@@ -74,6 +74,10 @@ Where to get it?
 ================
 
 `pip install BaselineRemoval`
+
+How to cite?
+============
+Md Azimul Haque (2022). Feature Engineering & Selection for Explainable Models A Second Course for Data Scientists
 
 Dependencies
 ============
