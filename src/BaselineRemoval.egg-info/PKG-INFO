@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: BaselineRemoval
-Version: 0.1.3
+Version: 0.1.4
 Summary: Perform baseline removal, baseline correction and baseline substraction for raman spectra using Modpoly, ImodPoly and Zhang fit. Returns baseline-subtracted spectrum
 Home-page: https://github.com/StatguyUser/BaselineRemoval
 Author: StatguyUser
