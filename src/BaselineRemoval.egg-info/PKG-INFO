@@ -1,110 +1,107 @@
 Metadata-Version: 2.1
 Name: BaselineRemoval
-Version: 0.1.4
+Version: 0.1.5
 Summary: Perform baseline removal, baseline correction and baseline substraction for raman spectra using Modpoly, ImodPoly and Zhang fit. Returns baseline-subtracted spectrum
 Home-page: https://github.com/StatguyUser/BaselineRemoval
 Author: StatguyUser
 License: UNKNOWN
 Download-URL: https://github.com/StatguyUser/BaselineRemoval.git
+Description: What is it?
+        ===========
+        
+        Companion python library for the machine learning book [Feature Engineering & Selection for Explainable Models: A Second Course for Data Scientists](https://statguyuser.github.io/feature-engg-selection-for-explainable-models.github.io/index.html). It is used for baseline correction. It has below 3 methods for baseline removal from spectra.
+        
+          - **Modpoly** Modified multi-polynomial fit [1]. It has below 3 parameters.
+          
+          1) `degree`, it refers to polynomial degree, and default value is 2.
+          
+          2) `repitition`, it refers to how many iterations to run, and default value is 100.
+          
+          3) `gradient`, it refers to gradient for polynomial loss, default is 0.001. It measures incremental gain over each iteration. If gain in any iteration is less than this, further improvement will stop.
+          
+          - **IModPoly** Improved ModPoly[2], which addresses noise issue in ModPoly. It has below 3 parameters.
+          
+          1) `degree`, it refers to polynomial degree, and default value is 2.
+          
+          2) `repitition`, it refers to how many iterations to run, and default value is 100.
+          
+          3) `gradient`, it refers to gradient for polynomial loss, and default is 0.001. It measures incremental gain over each iteration. If gain in any iteration is less than this, further improvement will stop.
+          
+          - **ZhangFit** Zhang fit[3], which doesn’t require any user intervention and prior information, such as detected peaks. It has below 3 parameters.
+          
+          1) `lambda_`, it can be adjusted by user. The larger lambda is,  the smoother the resulting background. Default value is 100.
+          
+          2) `porder` refers to adaptive iteratively reweighted penalized least squares for baseline fitting. Default value is 1.
+          
+          3) `repitition` is how many iterations to run, and default value is 15.
+        
+        We can use the python library to process spectral data through either of the techniques ModPoly, IModPoly or Zhang fit algorithm for baseline subtraction. The functions will return baseline-subtracted spectrum.
+        
+        How to use it?
+        =================
+        
+        ```python
+        
+        from BaselineRemoval import BaselineRemoval
+        
+        input_array=[10,20,1.5,5,2,9,99,25,47]
+        
+        polynomial_degree=2 #only needed for Modpoly and IModPoly algorithm
+        
+        baseObj=BaselineRemoval(input_array)
+        
+        Modpoly_output=baseObj.ModPoly(polynomial_degree)
+        
+        Imodpoly_output=baseObj.IModPoly(polynomial_degree)
+        
+        Zhangfit_output=baseObj.ZhangFit()
+        
+        print('Original input:',input_array)
+        
+        print('Modpoly base corrected values:',Modpoly_output)
+        
+        print('IModPoly base corrected values:',Imodpoly_output)
+        
+        print('ZhangFit base corrected values:',Zhangfit_output)
+        
+        Original input: [10, 20, 1.5, 5, 2, 9, 99, 25, 47]
+        
+        Modpoly base corrected values: [-1.98455800e-04  1.61793368e+01  1.08455179e+00  5.21544654e+00
+          7.20210508e-02  2.15427531e+00  8.44622093e+01 -4.17691125e-03
+          8.75511661e+00]
+        
+        IModPoly base corrected values: [-0.84912125 15.13786196 -0.11351367  3.89675187 -1.33134142  0.70220645
+         82.99739548 -1.44577432  7.37269705]
+        
+        ZhangFit base corrected values: [ 8.49924691e+00  1.84994576e+01 -3.31739230e-04  3.49854060e+00
+          4.97412948e-01  7.49628529e+00  9.74951576e+01  2.34940300e+01
+          4.54929023e+01
+        
+        ```
+        Where to get it?
+        ================
+        
+        `pip install BaselineRemoval`
+        
+        How to cite?
+        ============
+        Md Azimul Haque (2022). Feature Engineering & Selection for Explainable Models: A Second Course for Data Scientists. Lulu Press, Inc.
+        
+        Dependencies
+        ============
+        
+         - [numpy](https://www.numpy.org/])
+        
+         - [scikit-learn](https://scikit-learn.org/)
+        
+         - [scipy](https://www.scipy.org/)
+        
+        References
+        ============
+        
+        1. [Automated Method for Subtraction of Fluorescence from Biological Raman Spectra](https://www.researchgate.net/publication/8974238_Automated_Method_for_Subtraction_of_Fluorescence_from_Biological_Raman_Spectra) by Lieber & Mahadevan-Jansen (2003)
+        2. [Automated Autofluorescence Background Subtraction Algorithm for Biomedical Raman Spectroscopy](https://www.researchgate.net/publication/5818031_Automated_Autofluorescence_Background_Subtraction_Algorithm_for_Biomedical_Raman_Spectroscopy) by Zhao, Jianhua, Lui, Harvey, McLean, David I., Zeng, Haishan (2007)
+        3. [Baseline correction using adaptive iteratively reweighted penalized least squares](https://pubs.rsc.org/is/content/articlelanding/2010/an/b922045c#!divAbstract) by Zhi-Min Zhang, Shan Chena and Yi-Zeng Liang (2010)
+        
 Platform: UNKNOWN
 Description-Content-Type: text/markdown
-License-File: LICENSE
-
-What is it?
-===========
-
-Companion python library for the machine learning book [Feature Engineering & Selection for Explainable Models A Second Course for Data Scientists](https://statguyuser.github.io/feature-engg-selection-for-explainable-models.github.io/index.html). It is used for baseline correction. It has below 3 methods for baseline removal from spectra.
-
-  - **Modpoly** Modified multi-polynomial fit [1]. It has below 3 parameters.
-  
-  1) `degree`, it refers to polynomial degree, and default value is 2.
-  
-  2) `repitition`, it refers to how many iterations to run, and default value is 100.
-  
-  3) `gradient`, it refers to gradient for polynomial loss, default is 0.001. It measures incremental gain over each iteration. If gain in any iteration is less than this, further improvement will stop.
-  
-  - **IModPoly** Improved ModPoly[2], which addresses noise issue in ModPoly. It has below 3 parameters.
-  
-  1) `degree`, it refers to polynomial degree, and default value is 2.
-  
-  2) `repitition`, it refers to how many iterations to run, and default value is 100.
-  
-  3) `gradient`, it refers to gradient for polynomial loss, and default is 0.001. It measures incremental gain over each iteration. If gain in any iteration is less than this, further improvement will stop.
-  
-  - **ZhangFit** Zhang fit[3], which doesn’t require any user intervention and prior information, such as detected peaks. It has below 3 parameters.
-  
-  1) `lambda_`, it can be adjusted by user. The larger lambda is,  the smoother the resulting background. Default value is 100.
-  
-  2) `porder` refers to adaptive iteratively reweighted penalized least squares for baseline fitting. Default value is 1.
-  
-  3) `repitition` is how many iterations to run, and default value is 15.
-
-We can use the python library to process spectral data through either of the techniques ModPoly, IModPoly or Zhang fit algorithm for baseline subtraction. The functions will return baseline-subtracted spectrum.
-
-How to use it?
-=================
-
-```python
-
-from BaselineRemoval import BaselineRemoval
-
-input_array=[10,20,1.5,5,2,9,99,25,47]
-
-polynomial_degree=2 #only needed for Modpoly and IModPoly algorithm
-
-baseObj=BaselineRemoval(input_array)
-
-Modpoly_output=baseObj.ModPoly(polynomial_degree)
-
-Imodpoly_output=baseObj.IModPoly(polynomial_degree)
-
-Zhangfit_output=baseObj.ZhangFit()
-
-print('Original input:',input_array)
-
-print('Modpoly base corrected values:',Modpoly_output)
-
-print('IModPoly base corrected values:',Imodpoly_output)
-
-print('ZhangFit base corrected values:',Zhangfit_output)
-
-Original input: [10, 20, 1.5, 5, 2, 9, 99, 25, 47]
-
-Modpoly base corrected values: [-1.98455800e-04  1.61793368e+01  1.08455179e+00  5.21544654e+00
-  7.20210508e-02  2.15427531e+00  8.44622093e+01 -4.17691125e-03
-  8.75511661e+00]
-
-IModPoly base corrected values: [-0.84912125 15.13786196 -0.11351367  3.89675187 -1.33134142  0.70220645
- 82.99739548 -1.44577432  7.37269705]
-
-ZhangFit base corrected values: [ 8.49924691e+00  1.84994576e+01 -3.31739230e-04  3.49854060e+00
-  4.97412948e-01  7.49628529e+00  9.74951576e+01  2.34940300e+01
-  4.54929023e+01
-
-```
-Where to get it?
-================
-
-`pip install BaselineRemoval`
-
-How to cite?
-============
-Md Azimul Haque (2022). Feature Engineering & Selection for Explainable Models A Second Course for Data Scientists
-
-Dependencies
-============
-
- - [numpy](https://www.numpy.org/])
-
- - [scikit-learn](https://scikit-learn.org/)
-
- - [scipy](https://www.scipy.org/)
-
-References
-============
-
-1. [Automated Method for Subtraction of Fluorescence from Biological Raman Spectra](https://www.researchgate.net/publication/8974238_Automated_Method_for_Subtraction_of_Fluorescence_from_Biological_Raman_Spectra) by Lieber & Mahadevan-Jansen (2003)
-2. [Automated Autofluorescence Background Subtraction Algorithm for Biomedical Raman Spectroscopy](https://www.researchgate.net/publication/5818031_Automated_Autofluorescence_Background_Subtraction_Algorithm_for_Biomedical_Raman_Spectroscopy) by Zhao, Jianhua, Lui, Harvey, McLean, David I., Zeng, Haishan (2007)
-3. [Baseline correction using adaptive iteratively reweighted penalized least squares](https://pubs.rsc.org/is/content/articlelanding/2010/an/b922045c#!divAbstract) by Zhi-Min Zhang, Shan Chena and Yi-Zeng Liang (2010)
-
-

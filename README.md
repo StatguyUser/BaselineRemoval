@@ -1,5 +1,5 @@
 # What is it?
-Companion python library for the machine learning book [Feature Engineering & Selection for Explainable Models A Second Course for Data Scientists](https://statguyuser.github.io/feature-engg-selection-for-explainable-models.github.io/index.html). It is used for baseline correction. It has below 3 methods for baseline removal from spectra.
+Companion python library for the machine learning book [Feature Engineering & Selection for Explainable Models: A Second Course for Data Scientists](https://statguyuser.github.io/feature-engg-selection-for-explainable-models.github.io/index.html). It is used for baseline correction. It has below 3 methods for baseline removal from spectra.
 
   - **Modpoly** Modified multi-polynomial fit [1]. It has below 3 parameters.
   
@@ -59,7 +59,7 @@ ZhangFit base corrected values: [ 8.49924691e+00  1.84994576e+01 -3.31739230e-04
 `pip install BaselineRemoval`
 
 # How to cite?
-Md Azimul Haque (2022). Feature Engineering & Selection for Explainable Models A Second Course for Data Scientists
+Md Azimul Haque (2022). Feature Engineering & Selection for Explainable Models: A Second Course for Data Scientists. Lulu Press, Inc.
 
 # Dependencies
  - [numpy](https://www.numpy.org/])
